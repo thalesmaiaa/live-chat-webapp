@@ -9,7 +9,7 @@ export function Sidebar() {
 
   const paths = {
     home: '/',
-    myChats: `/users/${userData?.id}/chats`,
+    myChats: `/${userData?.id}/chats`,
     notifications: '/notifications',
   };
 

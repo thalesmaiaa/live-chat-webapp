@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui';
+import { Button, Input } from '@/components/ui';
 import * as React from 'react';
 
 type GroupChatNameModalProps = {
@@ -13,11 +13,10 @@ export function GroupChatNameModal({ onSubmit, onClose }: GroupChatNameModalProp
     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50'>
       <div className='bg-white p-6 rounded shadow max-w-sm w-full'>
         <h3 className='text-lg font-semibold mb-4'>Name your group chat</h3>
-        <input
+        <Input
           type='text'
           value={groupName}
           onChange={(e) => setGroupName(e.target.value)}
-          className='w-full border border-gray-300 rounded px-3 py-2 mb-4'
           placeholder='Group chat name'
         />
         <div className='flex justify-end gap-3'>

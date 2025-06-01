@@ -1,5 +1,6 @@
 import { useLiveChat } from '@/hooks';
 import { useUserStore } from '@/stores';
+import { toast } from 'sonner';
 
 export const useLogin = () => {
   const { request } = useLiveChat();
@@ -15,6 +16,7 @@ export const useLogin = () => {
     if (response.ok) {
       const data = await response.json();
       document.cookie = `authToken=${data.accessToken}; path=/;`;
+      toast.success('Login successful');
     }
 
     if (!response.ok) {

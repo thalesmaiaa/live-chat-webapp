@@ -1,8 +1,10 @@
+import React from 'react';
+
 import { ChatInput } from '@/components/ui';
 import { useRouter } from 'next/navigation';
-import React from 'react';
 import { useChat, UserContact } from '@/hooks';
 import { useUserStore } from '@/stores';
+import { XIcon } from '@/components/icons';
 
 type ChatModalProps = {
   onClose: () => void;
@@ -10,8 +12,9 @@ type ChatModalProps = {
 };
 
 export function ChatModal({ onClose, selectedContact }: ChatModalProps) {
-  const { userData } = useUserStore();
   const [message, setMessage] = React.useState('');
+
+  const { userData } = useUserStore();
   const { push } = useRouter();
 
   const { startNewChat } = useChat();
@@ -23,11 +26,9 @@ export function ChatModal({ onClose, selectedContact }: ChatModalProps) {
       userId: userData.id as string,
       receiverId: selectedContact.user.id,
       message: message,
-    }).catch((error) => {
-      console.error('Failed to start new chat:', error);
-    });
+    }).catch((error) => console.error('Failed to start new chat:', error));
 
-    push(`/users/${userData.id}/chats/${createdChatId}`);
+    push(`/${userData.id}/chats/${createdChatId}`);
   }
 
   if (!selectedContact) {
@@ -51,16 +52,7 @@ export function ChatModal({ onClose, selectedContact }: ChatModalProps) {
           aria-label='Close modal'
           className='absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded'
         >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            strokeWidth={2}
-          >
-            <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
-          </svg>
+          <XIcon color='text-gray-500' />
         </button>
 
         <h3 id='modal-title' className='text-2xl font-semibold mb-6 text-blue-950'>

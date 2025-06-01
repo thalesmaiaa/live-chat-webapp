@@ -5,3 +5,5 @@ export { Chat } from './Chat';
 export { ChatInput } from './ChatInput';
 export * as Card from './Card';
 export { Button } from './Button';
+export { Input } from './Input';
+export { InputErrorHelperText } from './InputErrorHelperText';

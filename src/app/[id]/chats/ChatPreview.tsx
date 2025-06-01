@@ -7,7 +7,7 @@ export function ChatPreview(chat: UserChat) {
   const { name, chatId, messages } = chat;
 
   function openChat(chatId: string) {
-    push(`/users/${userId}/chats/${chatId}`);
+    push(`/${userId}/chats/${chatId}`);
   }
 
   function extractChatDescription() {

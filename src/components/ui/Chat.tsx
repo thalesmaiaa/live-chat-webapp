@@ -1,6 +1,7 @@
 import { ReceivedWebSocketMessage } from '@/hooks/useNotificationSocket';
 import React from 'react';
 import { Button } from './Button';
+import { Input } from './Input';
 
 type ChatProps = {
   messages: ReceivedWebSocketMessage[];
@@ -67,10 +68,10 @@ export function Chat(props: ChatProps) {
           }
         }}
       >
-        <input
+        <Input
           type='text'
           placeholder='Type your message...'
-          className='flex-1 border border-gray-300 rounded px-4 py-2 text-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-500'
+          className='flex-1'
           onChange={(e) => setMessage(e.target.value)}
           value={message}
           disabled={!enabled}

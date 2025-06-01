@@ -16,7 +16,7 @@ export default function UserChats() {
   }
 
   function redirectToCreateChat() {
-    push(`/users/${userId}/new-chat`);
+    push(`/${userId}/new-chat`);
   }
 
   const hasChats = userChats && !!userChats.length;

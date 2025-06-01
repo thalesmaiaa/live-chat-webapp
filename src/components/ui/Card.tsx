@@ -4,8 +4,7 @@ import { twMerge } from 'tailwind-merge';
 type CardProps = React.ComponentProps<'li'>;
 type CardTitleProps = React.ComponentProps<'span'>;
 type CardIconProps = React.ComponentProps<'div'>;
-//  className='flex items-center justify-between p-4 border border-gray-300 rounded shadow-sm bg-white cursor-pointer hover:bg-blue-50'
-// className='p-4 border rounded shadow-sm bg-white flex items-center gap-4 hover:cursor-pointer hover:bg-blue-50'
+type CardActionsProps = React.ComponentProps<'div'>;
 
 function Container({ className, ...props }: CardProps) {
   return (
@@ -37,4 +36,8 @@ function Title({ className, ...props }: CardTitleProps) {
   return <span className={twMerge('text-ray-900', className)} {...props} />;
 }
 
-export { Container, Icon, Title };
+function Actions({ className, ...props }: CardActionsProps) {
+  return <div className={twMerge('flex items-center gap-2', className)} {...props} />;
+}
+
+export { Container, Icon, Title, Actions };

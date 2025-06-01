@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { RegisterUserData, useRegister } from './useRegister';
-import { Button } from '@/components/ui';
+import { Button, Input, InputErrorHelperText } from '@/components/ui';
 
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -26,42 +26,36 @@ export default function Register() {
         <form className='flex flex-col gap-4' onSubmit={handleSubmit(onLogin)} id='loginForm'>
           <div className='flex flex-row gap-4'>
             <div className='flex flex-col'>
-              <input
+              <Input
                 type='text'
                 placeholder='Username'
-                className='border border-gray-300 rounded px-4 py-2 text-blue-950'
                 {...register('username', { required: true })}
               />
-              <span className='text-red-500 text-sm h-4'>
-                {errors.username && 'This field is required'}
-              </span>
+              <InputErrorHelperText label='This field is required' visible={!!errors.username} />
             </div>
             <div className='flex flex-col'>
-              <input
+              <Input
                 type='text'
                 placeholder='E-mail'
-                className='border border-gray-300 rounded px-4 py-2 text-blue-950'
                 {...register('email', {
                   required: true,
                   pattern: emailPattern,
                 })}
               />
-              <span className='text-red-500 text-sm h-4'>
-                {errors.email && 'This field must be a valid email'}
-              </span>
+              <InputErrorHelperText
+                label='This field must be a valid email'
+                visible={!!errors.email}
+              />
             </div>
           </div>
 
           <div className='flex flex-col'>
-            <input
+            <Input
               type='text'
               placeholder='Password'
-              className='border border-gray-300 rounded px-4 py-2 text-blue-950'
               {...register('password', { required: true })}
             />
-            <span className='text-red-500 text-sm h-4'>
-              {errors.password && 'This field is required'}
-            </span>
+            <InputErrorHelperText label='This field is required' visible={!!errors.password} />
           </div>
 
           <Button className='w-28' form='loginForm' type='submit' disabled={isSubmitting}>

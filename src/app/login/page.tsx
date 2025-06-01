@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { useLogin } from './useLogin';
-import { Button } from '@/components/ui';
+import { Button, Input, InputErrorHelperText } from '@/components/ui';
 
 type Inputs = {
   email: string;
@@ -45,30 +45,27 @@ export default function Login() {
           id='loginForm'
         >
           <div className='flex flex-col'>
-            <input
+            <Input
               type='text'
               placeholder='E-mail'
-              className='border border-gray-300 rounded px-4 py-2 text-blue-950'
               {...register('email', {
                 required: true,
                 pattern: emailPattern,
               })}
             />
-            <span className='text-red-500 text-sm h-4'>
-              {errors.email && 'This field must be a valid email'}
-            </span>
+            <InputErrorHelperText
+              label='This field must be a valid email'
+              visible={!!errors.email}
+            />
           </div>
 
           <div className='flex flex-col'>
-            <input
-              type='text'
+            <Input
+              type='password'
               placeholder='Password'
-              className='border border-gray-300 rounded px-4 py-2 text-blue-950'
               {...register('password', { required: true })}
             />
-            <span className='text-red-500 text-sm h-4'>
-              {errors.password && 'This field is required'}
-            </span>
+            <InputErrorHelperText label='This field is required' visible={!!errors.password} />
 
             <button
               type='button'
