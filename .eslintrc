@@ -1,0 +1,66 @@
+{
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "jest": true
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "overrides": [
+      // override "simple-import-sort" config
+      {
+        "files": ["*.js", "*.jsx", "*.ts", "*.tsx", "*.json"],
+        "rules": {
+          "react/function-component-definition": [
+            "error",
+            {
+              "namedComponents": ["function-declaration", "arrow-function"],
+  
+              "unnamedComponents": "arrow-function"
+            }
+          ],
+          "simple-import-sort/imports": [
+            "error",
+            {
+              "groups": [
+                // Packages `react` related packages come first.
+                ["^react", "^@?\\w"],
+                // Internal packages.
+                ["^(@|components)(/.*|$)"],
+                // Side effect imports.
+                ["^\\u0000"],
+                // Parent imports. Put `..` last.
+                ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+                // Other relative imports. Put same-folder imports and `.` last.
+                ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+                // Style imports.
+                ["^.+\\.?(css)$"]
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "plugins": ["react", "simple-import-sort", "prettier", "react-hooks"],
+    "rules": {
+      "react/prop-types": ["off"],
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+      "react-hooks/exhaustive-deps": "warn" // Add this rule
+    }
+  }
+  
