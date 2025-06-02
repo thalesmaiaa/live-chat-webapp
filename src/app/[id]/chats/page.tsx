@@ -38,7 +38,7 @@ export default function UserChats() {
         <main className='flex flex-col gap-8 w-full'>
           <div className='flex justify-between items-center mb-6'>
             <h1 className='text-3xl font-semibold text-blue-950'>Your Chats</h1>
-            <Button onClick={redirectToCreateChat}>New Chat</Button>
+            <Button onClick={redirectToCreateChat}>Create group</Button>
           </div>
 
           {!hasChats && <p className='text-gray-600 text-center'>You have no active chats yet.</p>}

@@ -60,11 +60,8 @@ export function Contacts() {
       {hasContacts && (
         <ul className='space-y-4'>
           {contacts.map((contact) => {
-            const {
-              id,
-              user: { username },
-              hasActiveChat,
-            } = contact;
+            const { id, hasActiveChat, user } = contact;
+            const { username } = user;
             return (
               <Card.Container
                 key={id}

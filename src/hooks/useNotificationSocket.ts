@@ -38,7 +38,7 @@ export const useNotificationSocket = () => {
   const connectSocket = React.useCallback(
     ({ authToken, onSubscribe, subscribeUrl }: ConnectSocket) => {
       const client = new Client({
-        brokerURL: 'ws://localhost:8080/live-chat/buildrun-livechat-websocket',
+        brokerURL: 'ws://localhost:8080/live-chat/livechat',
         connectHeaders: {
           Authorization: `Bearer ${authToken}`,
         },
