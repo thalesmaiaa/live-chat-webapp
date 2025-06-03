@@ -5,11 +5,11 @@ import { Notifications } from './Notifications';
 export function Sidebar() {
   const { push } = useRouter();
   const pathname = usePathname();
-  const { userData, clearUserData } = useUserStore();
+  const { clearUserData } = useUserStore();
 
   const paths = {
     home: '/',
-    myChats: `/${userData?.id}/chats`,
+    myChats: `/chats`,
     notifications: '/notifications',
   };
 

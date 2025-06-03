@@ -35,7 +35,7 @@ export const useUserChat = ({ chatId }: { chatId: string }) => {
             sentAt: message.sentAt,
             senderUser: {
               id: message.senderUser.id,
-              name: message.senderUser.name || null,
+              username: message.senderUser.username,
               email: message.senderUser.email,
             },
           };

@@ -6,10 +6,13 @@ import { useNotificationSocket } from '@/hooks';
 import { extractCookie } from '@/lib/utils';
 import { useParams } from 'next/navigation';
 import { useUserChat } from './useUserChat';
+import { useUserStore } from '@/stores';
 
 export default function UserChatPage() {
-  const { chatId, id: userId } = useParams();
+  const { chatId } = useParams();
+  const { userData } = useUserStore();
 
+  const userId = userData?.id;
   const { connected, publishMessage, connectSocket, disconnectSocket } = useNotificationSocket();
   const { chat, state, setState } = useUserChat({ chatId: chatId as string });
 
@@ -22,7 +25,7 @@ export default function UserChatPage() {
   const authToken = extractCookie('authToken') || '';
 
   React.useEffect(() => {
-    if (authToken && userId) {
+    if (authToken && chatId) {
       connectSocket({
         authToken,
         subscribeUrl: `/topics/${chatId}`,
@@ -38,7 +41,7 @@ export default function UserChatPage() {
     return () => {
       disconnectSocket();
     };
-  }, [authToken, chatId, userId, connectSocket, disconnectSocket, setState]);
+  }, [authToken, chatId, connectSocket, disconnectSocket, setState]);
 
   async function onSubmit() {
     const message = {

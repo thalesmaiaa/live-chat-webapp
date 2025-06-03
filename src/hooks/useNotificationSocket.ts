@@ -1,24 +1,6 @@
+import { ReceivedWebSocketMessage, WebSocketMessage } from '@/@types';
 import { Client } from '@stomp/stompjs';
 import * as React from 'react';
-
-export type WebSocketMessage = {
-  senderId: string;
-  receiverId: string;
-  message: string;
-  sentAt: string;
-  chatId: string;
-  chatType: string;
-};
-
-export type ReceivedWebSocketMessage = {
-  message: string;
-  sentAt: string;
-  senderUser: {
-    id: string;
-    name: string | null;
-    email: string;
-  };
-};
 
 type PublishMessage = {
   destination: string;

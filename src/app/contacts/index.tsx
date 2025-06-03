@@ -5,13 +5,11 @@ import { useContacts, UserContact } from '@/hooks';
 import { Button, Card } from '@/components/ui';
 import { useRouter } from 'next/navigation';
 import { ChatModal } from './ChatModal';
-import { useUserStore } from '@/stores';
 import { SendMessageIcon, XIcon } from '@/components/icons';
 
 export function Contacts() {
   const { push } = useRouter();
   const { findUserContactsForNewChat, removeContact } = useContacts();
-  const { userData } = useUserStore();
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [selectedContact, setSelectedContact] = React.useState<UserContact>();
@@ -39,7 +37,7 @@ export function Contacts() {
   }
 
   function redirectToChat(contact: UserContact) {
-    push(`/${userData?.id}/chats/${contact.chatId}`);
+    push(`/chats/${contact.chatId}`);
   }
 
   function onCloseModal() {

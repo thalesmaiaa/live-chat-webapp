@@ -1,14 +1,13 @@
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { UserChat } from './useUserChats';
 import { Card } from '@/components/ui';
 
 export function ChatPreview(chat: UserChat) {
   const { push } = useRouter();
-  const { id: userId } = useParams();
   const { name, chatId, messages } = chat;
 
   function openChat(chatId: string) {
-    push(`/${userId}/chats/${chatId}`);
+    push(`/chats/${chatId}`);
   }
 
   function extractChatDescription() {

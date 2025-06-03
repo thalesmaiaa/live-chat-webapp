@@ -28,7 +28,7 @@ export function ChatModal({ onClose, selectedContact }: ChatModalProps) {
       message: message,
     }).catch((error) => console.error('Failed to start new chat:', error));
 
-    push(`/${userData.id}/chats/${createdChatId}`);
+    push(`/chats/${createdChatId}`);
   }
 
   if (!selectedContact) {

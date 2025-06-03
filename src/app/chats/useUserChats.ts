@@ -1,30 +1,6 @@
+import { UserChat } from '@/@types';
 import { useLiveChat } from '@/hooks';
 import { useQuery } from '@tanstack/react-query';
-
-export type UserChat = {
-  ownerId: string;
-  chatId: string;
-  name: string;
-  chatType: 'GROUP' | 'PRIVATE';
-  members: {
-    id: string;
-    email: string;
-    createdAt: string;
-    updatedAt: string;
-  }[];
-  messages: {
-    content: string;
-    sentAt: string;
-    senderUser: {
-      id: string;
-      email: string;
-      name?: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-  }[];
-  createdAt: string;
-};
 
 export const useUserChats = () => {
   const { request } = useLiveChat();

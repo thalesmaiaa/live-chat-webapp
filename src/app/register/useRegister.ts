@@ -1,12 +1,7 @@
+import { RegisterUserData } from '@/@types';
 import { useLiveChat } from '@/hooks';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-
-export type RegisterUserData = {
-  email: string;
-  password: string;
-  username: string;
-};
 
 export const useRegister = () => {
   const { push } = useRouter();

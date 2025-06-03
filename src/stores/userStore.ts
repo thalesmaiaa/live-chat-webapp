@@ -1,3 +1,4 @@
+import { UserNotification } from '@/@types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -7,8 +8,6 @@ type UserData = {
   createdAt: string;
   updatedAt: string;
 } | null;
-
-export type UserNotification = 'CONTACT_REQUEST' | 'MESSAGE' | 'GROUP_INVITE';
 
 interface UserStore {
   userData?: UserData;

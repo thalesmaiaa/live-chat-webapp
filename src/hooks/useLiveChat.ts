@@ -1,7 +1,7 @@
 import { extractCookie } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
-export type LiveChatRequest<T> = {
+type LiveChatRequest<T> = {
   headers?: Record<string, string>;
   body?: T;
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';

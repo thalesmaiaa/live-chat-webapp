@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { RegisterUserData, useRegister } from './useRegister';
+import { useRegister } from './useRegister';
 import { Button, Input, InputErrorHelperText } from '@/components/ui';
+import { RegisterUserData } from '@/@types';
 
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 

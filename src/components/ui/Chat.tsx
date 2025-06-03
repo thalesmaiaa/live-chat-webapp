@@ -1,7 +1,7 @@
-import { ReceivedWebSocketMessage } from '@/hooks/useNotificationSocket';
 import React from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
+import { ReceivedWebSocketMessage } from '@/@types';
 
 type ChatProps = {
   messages: ReceivedWebSocketMessage[];
@@ -40,10 +40,17 @@ export function Chat(props: ChatProps) {
                   : 'bg-gray-100 self-start text-left'
               }`}
             >
-              <div className='flex items-center gap-2'>
-                <p className='flex-1 break-words'>
-                  <strong>{message.senderUser.email}</strong>: {message.message}
-                </p>
+              <div className='flex items-end gap-2'>
+                {!isOwnMessage && (
+                  <p className='break-words whitespace-normal overflow-hidden text-left'>
+                    <strong>{message.senderUser.username}</strong>: {message.message}
+                  </p>
+                )}
+                {isOwnMessage && (
+                  <p className='break-words whitespace-normal overflow-hidden text-right'>
+                    {message.message}
+                  </p>
+                )}
                 <span className='text-gray-500 text-xs whitespace-nowrap ml-auto'>
                   {new Date(message.sentAt).toLocaleTimeString([], {
                     hour: '2-digit',

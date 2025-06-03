@@ -4,10 +4,9 @@ import * as React from 'react';
 import { useUserChats } from './useUserChats';
 import { Button, Loader, Sidebar, WrapperContainer } from '@/components/ui';
 import { ChatPreview } from './ChatPreview';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function UserChats() {
-  const { id: userId } = useParams();
   const { push } = useRouter();
   const { userChats, isLoading } = useUserChats();
 
@@ -16,7 +15,7 @@ export default function UserChats() {
   }
 
   function redirectToCreateChat() {
-    push(`/${userId}/new-chat`);
+    push(`/new-chat`);
   }
 
   const hasChats = userChats && !!userChats.length;
