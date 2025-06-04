@@ -17,7 +17,7 @@ export type ReceivedWebSocketMessage = {
     username: string;
     email: string;
   };
-  notificationType: UserNotification;
-  destination: string;
-  destinationId: string;
+  notificationType?: UserNotification;
+  destination?: string;
+  destinationId?: string;
 };

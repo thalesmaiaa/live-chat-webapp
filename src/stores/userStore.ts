@@ -15,6 +15,7 @@ interface UserStore {
   setUserData: (user: UserData) => void;
   setNotifications: (notifications: UserNotification[]) => void;
   clearUserData: () => void;
+  clearNotifications: () => void;
 }
 export const useUserStore = create<UserStore>()(
   persist(

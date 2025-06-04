@@ -1,7 +1,6 @@
+import { ReceivedWebSocketMessage, UserChat } from '@/@types';
 import { useLiveChat } from '@/hooks';
 import { useQuery } from '@tanstack/react-query';
-import { UserChat } from '../useUserChats';
-import { ReceivedWebSocketMessage } from '@/hooks/useNotificationSocket';
 import React from 'react';
 
 type State = {
@@ -35,7 +34,7 @@ export const useUserChat = ({ chatId }: { chatId: string }) => {
             sentAt: message.sentAt,
             senderUser: {
               id: message.senderUser.id,
-              username: message.senderUser.username,
+              username: message.senderUser.username as string,
               email: message.senderUser.email,
             },
           };

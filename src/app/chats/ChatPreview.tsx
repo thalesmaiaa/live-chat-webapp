@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
-import { UserChat } from './useUserChats';
 import { Card } from '@/components/ui';
+import { UserChat } from '@/@types';
 
 export function ChatPreview(chat: UserChat) {
   const { push } = useRouter();

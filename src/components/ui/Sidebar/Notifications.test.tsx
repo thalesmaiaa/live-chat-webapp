@@ -152,6 +152,29 @@ describe('Notifications', () => {
     expect(mockPush).toHaveBeenCalledWith('/chats/chat123');
   });
 
+  test('redirects to notifications page for other notification types', () => {
+    let onSubscribeCallback: (message: NotificationMessage) => void;
+    let capturedAction: { label: string; onClick: () => void } | undefined;
+    mockConnectSocket.mockImplementation(({ onSubscribe }) => {
+      onSubscribeCallback = onSubscribe;
+    });
+    (toast.info as jest.Mock).mockImplementation((_, options) => {
+      capturedAction = options.action;
+    });
+    render(<Notifications />);
+    act(() => {
+      onSubscribeCallback({
+        notificationType: 'CONTACT_REQUEST',
+        destinationId: 'someId',
+        message: 'You have a new notification',
+      });
+    });
+    act(() => {
+      capturedAction?.onClick();
+    });
+    expect(mockPush).toHaveBeenCalledWith('/notifications');
+  });
+
   test('does not show toast when already on the destination page', () => {
     (usePathname as jest.Mock).mockReturnValue('/chats/chat123');
 

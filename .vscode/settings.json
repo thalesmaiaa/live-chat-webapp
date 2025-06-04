@@ -1,11 +1,11 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[javascript, javascriptreact]": {
-      "editor.formatOnSave": false
-    },
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
-    }
-  }
-  
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript, javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "jest.runMode": "watch"
+}
