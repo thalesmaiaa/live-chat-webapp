@@ -5,7 +5,7 @@ import { extractCookie } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { useUserStore } from '@/stores';
 import { toast } from 'sonner';
-import { ReceivedWebSocketMessage, UserNotification } from '@/@types';
+import { ReceivedWebSocketMessage } from '@/@types';
 
 export function Notifications() {
   const { userData, setNotifications, notifications } = useUserStore();
@@ -18,7 +18,10 @@ export function Notifications() {
 
   const handleNotificationRedirect = React.useCallback(
     (message: ReceivedWebSocketMessage) => {
-      if (message.notificationType === 'NEW_MESSAGE') {
+      const shouldRedirectToChat =
+        message.notificationType === 'NEW_MESSAGE' ||
+        message.notificationType === 'UNREAD_MESSAGES';
+      if (shouldRedirectToChat) {
         push(`/chats/${message.destinationId}`);
         return;
       }
@@ -43,10 +46,7 @@ export function Notifications() {
         });
       }
 
-      const updatedNotifications = [
-        ...(notifications || []),
-        message.notificationType,
-      ] as UserNotification[];
+      const updatedNotifications = [...(notifications || []), message.notificationType];
       setNotifications(updatedNotifications);
     },
     [pathname, notifications, setNotifications, handleNotificationRedirect],

@@ -1,4 +1,8 @@
-export type UserNotification = 'CONTACT_REQUEST' | 'NEW_MESSAGE' | 'GROUP_INVITE';
+export type UserNotification =
+  | 'CONTACT_REQUEST'
+  | 'NEW_MESSAGE'
+  | 'GROUP_INVITE'
+  | 'UNREAD_MESSAGES';
 
 export type WebSocketMessage = {
   senderId: string;
@@ -17,7 +21,7 @@ export type ReceivedWebSocketMessage = {
     username: string;
     email: string;
   };
-  notificationType?: UserNotification;
+  notificationType: UserNotification;
   destination?: string;
   destinationId?: string;
 };

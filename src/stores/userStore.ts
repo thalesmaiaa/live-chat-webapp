@@ -11,7 +11,7 @@ type UserData = {
 
 interface UserStore {
   userData?: UserData;
-  notifications?: UserNotification[];
+  notifications: UserNotification[];
   setUserData: (user: UserData) => void;
   setNotifications: (notifications: UserNotification[]) => void;
   clearUserData: () => void;
