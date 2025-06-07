@@ -1,6 +1,7 @@
 # Live Chat Webapp Documentation
 
-Welcome to the **Live Chat Webapp**! This project is a real-time chat application built with [Next.js](https://nextjs.org), React, Zustand, React Query, and WebSockets (STOMP over SockJS). It features user authentication, contact management, group and private chats, notifications, and a modern UI styled with Tailwind CSS.
+
+Welcome to the **Live Chat Webapp**! This is a simple web interface built to serve as usage for the functionalities provided by [@thalesmaiaa/live-chat](https://github.com/thalesmaiaa/live-chat), built with [Next.js](https://nextjs.org), React, Zustand, React Query, and WebSockets (STOMP over SockJS). It features user authentication, contact management, group and private chats, notifications, and a modern UI styled with Tailwind CSS.
 
 ## Table of Contents
 
