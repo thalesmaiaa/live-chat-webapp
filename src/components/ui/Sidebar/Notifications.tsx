@@ -32,9 +32,9 @@ export function Notifications() {
     (message: ReceivedWebSocketMessage) => {
       const { message: receivedMessage } = message as { message: string };
 
-      const isChatDestinationOpened = pathname.includes(message.destinationId);
+      const isChatDestinationOpened = pathname.includes(message.destinationId as string);
       if (!isChatDestinationOpened) {
-        toast.info(`New notification: ${receivedMessage}`, {
+        toast.info(`${receivedMessage}`, {
           duration: 5000,
           action: {
             label: 'View',

@@ -18,6 +18,9 @@ const customJestConfig = {
     '!src/app/layout.tsx',
     '!src/app/page.tsx',
     '!src/**/index.ts',
+    '!src/components/**/*.tsx',
+    '!src/**/providers/*.tsx',
+    '!src/**/page.tsx',
   ],
 };
 

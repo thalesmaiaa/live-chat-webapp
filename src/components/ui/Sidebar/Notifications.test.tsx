@@ -115,10 +115,7 @@ describe('Notifications', () => {
       });
     });
 
-    expect(toast.info).toHaveBeenCalledWith(
-      'New notification: You have a new message',
-      expect.any(Object),
-    );
+    expect(toast.info).toHaveBeenCalledWith('You have a new message', expect.any(Object));
 
     expect(mockSetNotifications).toHaveBeenCalledWith(['PREVIOUS_NOTIFICATION', 'NEW_MESSAGE']);
   });
