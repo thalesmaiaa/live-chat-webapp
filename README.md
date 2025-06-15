@@ -60,7 +60,19 @@ Key files and folders:
    npm install
    ```
 
-2. **Run the development server:**
+2. **Set up environment variables:**
+
+   Create a `.env` file in the root directory and add your API base URL and WebSocket URL:
+
+   ```env
+   NEXT_PUBLIC_API_BASE_URL=http://localhost:8080/live-chat
+   NEXT_PUBLIC_WS_URL=ws://localhost:8080/live-chat
+
+   ```
+
+   Adjust the URL according to your backend setup.
+
+3. **Run the development server:**
 
    ```sh
    npm run dev
@@ -68,7 +80,7 @@ Key files and folders:
 
    Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-3. **Run tests:**
+4. **Run tests:**
 
    ```sh
    npm test
