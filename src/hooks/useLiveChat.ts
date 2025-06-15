@@ -16,7 +16,7 @@ const HttpStatus = {
 
 export const useLiveChat = () => {
   const router = useRouter();
-  const apiUrl = `http://localhost:8080/live-chat`;
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   async function request<T>(props: LiveChatRequest<T>) {
     const authToken = extractCookie('authToken');
